@@ -1,0 +1,14 @@
+body{
+    display: grid;
+    grid-template-columns: 1fr 2fr ;
+    justify-content: space-between;
+}
+
+.menu-lateral {
+    display: grid;
+}
+
+.div-menu-lateral {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
