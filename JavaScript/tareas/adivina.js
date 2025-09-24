@@ -1,27 +1,59 @@
-"use strict";
+// Constantes del juego
+const NUMERO_INTENTOS = 3;
+const VALOR_MAXIMO = 10;
 
-const prompt = require('prompt-sync')();
-let numero_intentos = 5;
-let valor_maximo = 10;
+const readline = require('readline');
 
-const numero_secreto = Math.floor(Math.random() * (valor_maximo + 1));
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-let acierto = false;
+// Generar número secreto
+const numeroSecreto = Math.floor(Math.random() * (VALOR_MAXIMO + 1));
+let intentosRestantes = NUMERO_INTENTOS;
 
-for (let i = 1; i <= numero_intentos; i++) {
-  let intento = parseInt(prompt(`Intento ${i}/${numero_intentos}: Adivina un número entre 0 y ${valor_maximo}`));
+console.log(`¡Bienvenido al juego de adivinar el número!`);
+console.log(`Tienes ${intentosRestantes} intentos para adivinar un número entre 0 y ${VALOR_MAXIMO}`);
 
-  if (intento === numeroSecreto) {
-    alert("¡Enorabuena! El número secreto era " + numero_secreto);
-    acierto = true;
-    break;
-  } else if (intento > numero_secreto) {
-    alert("El número secreto es MENOR");
-  } else {
-    alert("El número secreto es MAYOR");
-  }
+function hacerPregunta() {
+    if (intentosRestantes <= 0) {
+        console.log(`¡Se te acabaron los intentos! El número secreto era ${numeroSecreto}.`);
+        rl.close();
+        return;
+    }
+
+    rl.question(`Intento ${NUMERO_INTENTOS - intentosRestantes + 1}/${NUMERO_INTENTOS}. Introduce un número: `, (input) => {
+        const numeroUsuario = parseInt(input);
+
+        if (isNaN(numeroUsuario) || numeroUsuario < 0 || numeroUsuario > VALOR_MAXIMO) {
+            console.log(`Por favor, introduce un número válido entre 0 y ${VALOR_MAXIMO}.`);
+            hacerPregunta();
+            return;
+        }
+
+        if (numeroUsuario === numeroSecreto) {
+            console.log(`¡Felicidades! ¡Has adivinado el número ${numeroSecreto}!`);
+            rl.close();
+        } else {
+            intentosRestantes--;
+            
+            if (numeroUsuario > numeroSecreto) {
+                console.log(`El número secreto es MENOR que ${numeroUsuario}.`);
+            } else {
+                console.log(`El número secreto es MAYOR que ${numeroUsuario}.`);
+            }
+            
+            if (intentosRestantes > 0) {
+                console.log(`Te quedan ${intentosRestantes} intentos.\n`);
+                hacerPregunta();
+            } else {
+                console.log(`¡Se te acabaron los intentos! El número secreto era ${numeroSecreto}.`);
+                rl.close();
+            }
+        }
+    });
 }
 
-if (!acierto) {
-  alert("Se acabaron los intentos. El número secreto era " + numero_secreto);
-}
+// Iniciar el juego
+hacerPregunta();
