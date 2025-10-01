@@ -1,40 +1,27 @@
 
-// Programa para gestionar un equipo de fútbol: permite registrar jugadores y consultarlos por número
 const readline = require("readline");
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 let equipo = {};
 
-// Función para pedir datos de los jugadores y construir el equipo
 function pedirJugador() {
-    // Solicita el número del jugador
     rl.question("Número de jugador (vacío para terminar): ", num => {
         if (!num.trim()) {
-            // Si el usuario pulsa Enter sin escribir nada, termina la configuración
             console.log("\nEquipo configurado:", equipo);
             return consultarJugador();
         }
-        // Solicita el nombre del jugador
         rl.question("Nombre del jugador: ", nombre => {
-            // Guarda el jugador en el objeto 'equipo', usando el número como clave
-            // Si el nombre está vacío, se asigna "Sin nombre"
             equipo[num.trim()] = nombre.trim() || "Sin nombre";
-            // Llama recursivamente para pedir el siguiente jugador
             pedirJugador();
         });
     });
 }
 
-// Función para consultar jugadores por número
 function consultarJugador() {
-    // Solicita el número del jugador a consultar
     rl.question("\nConsulta número de jugador (0 para salir): ", num => {
         if (num.trim() === "0") return rl.close();
-        // Muestra el nombre del jugador si existe, o indica que no existe
         console.log(equipo[num.trim()] ? `Jugador: ${equipo[num.trim()]}` : "No existe ese jugador.");
-        // Permite seguir consultando hasta que el usuario escriba 0
         consultarJugador();
     });
 }
 
-// Inicio del programa: comienza pidiendo los jugadores
 pedirJugador();
