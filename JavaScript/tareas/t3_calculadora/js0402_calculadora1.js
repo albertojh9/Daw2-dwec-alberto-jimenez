@@ -1,102 +1,50 @@
-const readline = require("readline");
+// Crea la interfaz para leer desde consola
+const rl = require("readline").createInterface({ input: process.stdin, output: process.stdout });
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+// Variables para la pantalla y la memoria de la calculadora
+let pantalla = 0, memoria = 0;
 
-// Variables globales
-let pantalla = 0;
-let memoria = 0;
+// Realiza una operación sobre la pantalla
+function op(valor, f) { pantalla = f(pantalla, valor); }
 
-// Funciones de operaciones
-function sumar(valor) { pantalla += valor; }
-function restar(valor) { pantalla -= valor; }
-function multiplicar(valor) { pantalla *= valor; }
-function dividir(valor) { pantalla /= valor; }
-function modulo(valor) { pantalla %= valor; }
-function potencia(valor) { 
-    rl.question("Introduce el exponente: ", (exp) => {
-        pantalla = Math.pow(pantalla, parseFloat(exp));
-        console.log("Pantalla:", pantalla);
-        menu();
-    });
-    return true; // Para evitar volver a menu inmediatamente
-}
-function factorial() {
-    if (pantalla < 0 || !Number.isInteger(pantalla)) {
-        console.log("Factorial solo definido para enteros no negativos");
-    } else {
-        let fact = 1;
-        for (let i = 1; i <= pantalla; i++) fact *= i;
-        pantalla = fact;
-    }
-}
-function guardarMemoria() { memoria = pantalla; }
-function recuperarMemoria() { pantalla = memoria; }
-function reset() { pantalla = 0; memoria = 0; }
+// Calcula el factorial de un número
+function fact(n) { return n < 0 || !Number.isInteger(n) ? NaN : (n ? n * fact(n - 1) : 1); }
 
-// Menú principal
+// Muestra el menú y gestiona las operaciones
 function menu() {
-    console.log("\nPantalla:", pantalla, " | Memoria:", memoria);
-    console.log("Operaciones: + - * / % ! ^ M R C (C=reset) S=saliR");
-    
-    rl.question("Introduce operación: ", (op) => {
-        let requiereValor = ["+", "-", "*", "/", "%"].includes(op);
-
-        if (op === "S" || op === "s") {
-            console.log("Saliendo...");
-            rl.close();
-            return;
-        } else if (op === "!" ) {
-            factorial();
-        } else if (op === "^") {
-            if (potencia()) return; // La función potencia maneja el menú
-        } else if (op === "M") {
-            guardarMemoria();
-        } else if (op === "R") {
-            recuperarMemoria();
-        } else if (op === "C") {
-            reset();
-        } else if (requiereValor) {
-            rl.question("Introduce valor: ", (val) => {
-                let numero = parseFloat(val);
-                switch(op) {
-                    case "+": sumar(numero); break;
-                    case "-": restar(numero); break;
-                    case "*": multiplicar(numero); break;
-                    case "/": dividir(numero); break;
-                    case "%": modulo(numero); break;
-                }
-                menu();
-            });
-            return; // Evitar ejecutar menu dos veces
-        } else {
-            console.log("Operación no reconocida");
-        }
-
-        menu(); // Volver al menú después de la operación
+  console.log(`\nPantalla: ${pantalla} | Memoria: ${memoria}`);
+  rl.question("Operación (+,-,*,/,%,!,^,M,R,C,S): ", o => {
+    // Sale si el usuario pulsa S
+    if ("Ss".includes(o)) return rl.close();
+    // Factorial
+    if (o === "!") pantalla = fact(pantalla);
+    // Potencia
+    else if (o === "^") return rl.question("Exponente: ", e => { pantalla **= parseFloat(e); menu(); });
+    // Guarda en memoria
+    else if (o === "M") memoria = pantalla;
+    // Recupera de memoria
+    else if (o === "R") pantalla = memoria;
+    // Borra pantalla y memoria
+    else if (o === "C") pantalla = memoria = 0;
+    // Operaciones aritméticas
+    else if ("+-*/%".includes(o)) return rl.question("Valor: ", v => {
+      const n = parseFloat(v);
+      const f = { "+": (a,b)=>a+b, "-":(a,b)=>a-b, "*":(a,b)=>a*b, "/":(a,b)=>a/b, "%":(a,b)=>a%b }[o];
+      op(n, f); menu();
     });
+    menu();
+  });
 }
 
-// Programa de prueba
-function programaPrueba() {
-    console.log("=== Programa de prueba ===");
-    pantalla = 5; console.log("Pantalla inicial:", pantalla);
-    sumar(3); console.log("Suma 3 ->", pantalla);
-    restar(2); console.log("Resta 2 ->", pantalla);
-    multiplicar(4); console.log("Multiplica por 4 ->", pantalla);
-    dividir(3); console.log("Divide por 3 ->", pantalla);
-    modulo(5); console.log("Modulo 5 ->", pantalla);
-    factorial(); console.log("Factorial ->", pantalla);
-    pantalla = 2; potencia(); // Se pedirá exponente
-    guardarMemoria(); console.log("Memoria guardada ->", memoria);
-    reset(); console.log("Reset -> Pantalla:", pantalla, "Memoria:", memoria);
-    recuperarMemoria(); console.log("Recuperar memoria -> Pantalla:", pantalla);
-    
-    console.log("=== Fin programa de prueba ===\n");
-    menu(); // Empezar menú interactivo
+// Prueba automática de la calculadora
+function prueba() {
+  console.log("=== Prueba automática ===");
+  pantalla = 5;
+  op(3,(a,b)=>a+b); op(2,(a,b)=>a-b); op(4,(a,b)=>a*b); op(3,(a,b)=>a/b); op(5,(a,b)=>a%b);
+  pantalla = fact(pantalla); memoria = pantalla; pantalla = 0; pantalla = memoria;
+  console.log("Fin de prueba.\n");
+  menu();
 }
 
-// Ejecutar programa de prueba
-programaPrueba();
+// Inicia la prueba automática
+prueba();
