@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Cambiar texto - ejercicio sencillo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Versión sencilla sin CSS, único script para evitar inicialización doble -->
+</head>
+<body>
+	<h2>Cambiar tamaño y tipo de letra (sin CSS)</h2>
+
+	<p id="miParrafo">Este es un texto de ejemplo. Cambia su tamaño y tipo de letra usando los controles.</p>
+
+	<label for="tamanio">Tamaño (pt): </label>
+	<input id="tamanio" type="number" step="1" min="6" max="200">
+
+	<label for="fuentes">Fuente: </label>
+	<select id="fuentes">
+		<option value="serif">serif</option>
+		<option value="sans-serif">sans-serif</option>
+		<option value="monospace">monospace</option>
+		<option value="cursive">cursive</option>
+		<option value="fantasy">fantasy</option>
+	</select>
+
+	<script src="archivo.js"></script>
+</body>
+</html>

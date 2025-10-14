@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarea 2 - Formulario</title>
+  <meta name="description" content="Formulario con ayuda, validación por campo y validación al enviar">
+</head>
+<body>
+  <h1>Tarea 2 - Formulario</h1>
+
+  <form id="formCliente" action="#">
+    <fieldset>
+      <legend>Datos personales</legend>
+
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" name="nombre" type="text" data-help="Introduce tu nombre. Obligatorio." data-validate="required">
+      <br><br>
+
+      <label for="apellidos">Apellidos:</label>
+      <input id="apellidos" name="apellidos" type="text" data-help="Introduce tus apellidos. Obligatorio." data-validate="required">
+      <br><br>
+
+      <label for="dni">DNI:</label>
+      <input id="dni" name="dni" type="text" data-help="DNI: 8 dígitos + letra. Ej: 12345678Z" data-validate="dni">
+    </fieldset>
+
+    <fieldset>
+      <legend>Cuenta</legend>
+
+      <label for="email">Email:</label>
+      <input id="email" name="email" type="email" data-help="Introduce un email válido (contiene @)." data-validate="email">
+      <br><br>
+
+      <label for="pass1">Contraseña:</label>
+      <input id="pass1" name="pass1" type="password" data-help="Introduce una contraseña (obligatoria)." data-validate="required">
+      <br><br>
+
+      <label for="pass2">Repetir contraseña:</label>
+      <input id="pass2" name="pass2" type="password" data-help="Repite la contraseña anterior." data-validate="passmatch" data-passmatch-target="pass1">
+    </fieldset>
+
+    <p>
+      <button id="btnAceptar" type="submit">Aceptar</button>
+      <button id="btnLimpiar" type="button">Limpiar</button>
+    </p>
+  </form>
+
+  <div id="ayuda"><p id="ayudaTexto">Aquí se mostrará la ayuda y errores.</p></div>
+
+  <script type="module" src="formulario.mjs"></script>
+</body>
+</html>
