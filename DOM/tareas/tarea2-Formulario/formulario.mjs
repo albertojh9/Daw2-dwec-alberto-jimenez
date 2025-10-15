@@ -1,7 +1,15 @@
-// formulario.mjs - lógica principal (módulo)
-// Implementa ayuda por campo, validación por campo y validación del formulario al enviar
+// formulario.js (sin módulos)
+// Implementa ayuda por campo, validación de campos y validación al enviar
 
-import { validarRequired, validarDni, validarEmail, validarPassMatch } from './formulario-validaciones.mjs';
+// Mapa de ayudas alternativo (array asociativo) - en caso de querer usar JS en vez de data-help
+const helpMap = {
+  nombre: 'Introduce tu nombre (no vacío).',
+  apellidos: 'Introduce tus apellidos (no vacío).',
+  dni: 'DNI: 8 dígitos y una letra. Ej: 12345678Z',
+  email: 'Introduce un email válido que contenga @.',
+  pass1: 'Introduce la contraseña.',
+  pass2: 'Repite la contraseña anterior.'
+};
 
 function mostrarAyuda(text) {
   const p = document.getElementById('ayudaTexto');
@@ -10,13 +18,13 @@ function mostrarAyuda(text) {
 
 function mostrarErrorCampo(el, msg) {
   el.dataset.error = msg;
-  el.style.backgroundColor = '#fdd';
+  el.classList.add('error');
   mostrarAyuda(msg);
 }
 
 function limpiarErrorCampo(el) {
   delete el.dataset.error;
-  el.style.backgroundColor = '';
+  el.classList.remove('error');
 }
 
 function validarCampo(el) {
@@ -46,15 +54,17 @@ function validarCampo(el) {
         return false;
       }
       break;
-    case 'passmatch':
+    case 'passmatch': {
       const targetId = el.dataset.passmatchTarget;
       const target = document.getElementById(targetId);
       if (!target) return true;
       if (!validarPassMatch(val, target.value)) {
+        // Validación por campo: marcar el segundo campo si no coincide
         mostrarErrorCampo(el, 'Las contraseñas no coinciden. Introduce las dos de nuevo.');
         return false;
       }
       break;
+    }
     default:
       return true;
   }
@@ -64,16 +74,25 @@ function validarCampo(el) {
 
 function setupField(el) {
   el.addEventListener('focus', () => {
-    const help = el.dataset.help || '';
+    const help = el.dataset.help || helpMap[el.id] || '';
     mostrarAyuda(help);
   });
 
   el.addEventListener('blur', () => {
-    const ok = validarCampo(el);
+    let ok = true;
+    try {
+      ok = validarCampo(el);
+    } catch (err) {
+      console.error('Error validando campo', el.id, err);
+      mostrarErrorCampo(el, 'Error interno de validación');
+      ok = false;
+    }
     if (!ok) {
-      setTimeout(() => el.focus(), 0);
+      // marcar el campo con error, pero NO forzar foco para evitar bucles
+      el.classList.add('error');
       return;
     }
+    // si no hay ayuda definida, limpiar
     if (!el.dataset.help) mostrarAyuda('');
   });
 
@@ -85,19 +104,29 @@ function setupField(el) {
 function validarFormulario(form) {
   const elements = Array.from(form.querySelectorAll('input'));
   let firstError = null;
+
   elements.forEach(el => limpiarErrorCampo(el));
 
   for (const el of elements) {
-    const ok = validarCampo(el);
+    let ok = true;
+    try {
+      ok = validarCampo(el);
+    } catch (err) {
+      console.error('Error validando campo en formulario', el.id, err);
+      mostrarErrorCampo(el, 'Error interno de validación');
+      ok = false;
+    }
     if (!ok && !firstError) firstError = el;
   }
 
+  // Si hay errores, mostrar y focalizar el primero
   if (firstError) {
     mostrarAyuda(firstError.dataset.error || 'Hay errores en el formulario.');
     firstError.focus();
     return false;
   }
 
+  // Validación de contraseñas: al enviar, si no coinciden marcar el primer campo
   const pass1 = document.getElementById('pass1');
   const pass2 = document.getElementById('pass2');
   if (pass1 && pass2 && pass1.value !== pass2.value) {
@@ -119,8 +148,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (validarFormulario(form)) {
-      alert('Formulario válido. Envío simulado.');
+    try {
+      if (validarFormulario(form)) {
+        alert('Formulario válido. Envío simulado.');
+      }
+    } catch (err) {
+      console.error('Error en submit', err);
+      mostrarAyuda('Se ha producido un error. Intenta de nuevo.');
     }
   });
 

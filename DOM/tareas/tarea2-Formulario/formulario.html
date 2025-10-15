@@ -4,12 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tarea 2 - Formulario</title>
+  <link rel="stylesheet" href="formulario.css">
   <meta name="description" content="Formulario con ayuda, validación por campo y validación al enviar">
 </head>
 <body>
-  <h1>Tarea 2 - Formulario</h1>
+  <div class="container-form">
+    <h1 class="title">Tarea 2 - Formulario</h1>
 
-  <form id="formCliente" action="#">
+    <form id="formCliente" action="#">
     <fieldset>
       <legend>Datos personales</legend>
 
@@ -44,10 +46,12 @@
       <button id="btnAceptar" type="submit">Aceptar</button>
       <button id="btnLimpiar" type="button">Limpiar</button>
     </p>
-  </form>
+    </form>
 
-  <div id="ayuda"><p id="ayudaTexto">Aquí se mostrará la ayuda y errores.</p></div>
+    <div id="ayuda"><p id="ayudaTexto">Pasa el cursor o entra en un campo para ver ayuda específica aquí.</p></div>
+  </div>
 
-  <script type="module" src="formulario.mjs"></script>
+  <script src="formulario-validaciones.mjs"></script>
+  <script src="formulario.mjs" defer></script>
 </body>
 </html>

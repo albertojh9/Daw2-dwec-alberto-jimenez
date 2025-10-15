@@ -1,11 +1,11 @@
-// formulario-validaciones.mjs
-// Funciones de validación exportadas para ser reutilizadas
+// formulario-validaciones.js
+// Funciones de validación en ámbito global (no módulos)
 
-export function validarRequired(value) {
+function validarRequired(value) {
   return value != null && String(value).trim().length > 0;
 }
 
-export function validarDni(value) {
+function validarDni(value) {
   if (!value) return false;
   const dni = String(value).toUpperCase().replace(/[^0-9A-Z]/g, '');
   if (dni.length !== 9) return false;
@@ -17,11 +17,11 @@ export function validarDni(value) {
   return calc === letra;
 }
 
-export function validarEmail(value) {
+function validarEmail(value) {
   if (!value) return false;
   return String(value).includes('@');
 }
 
-export function validarPassMatch(value, targetValue) {
+function validarPassMatch(value, targetValue) {
   return value === targetValue;
 }
