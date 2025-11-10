@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Raya</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Tres en Raya</h1>
+        
+        <!-- Marcador -->
+        <div class="marcador">
+            <div>Jugador X: <span id="puntos-x">0</span></div>
+            <div>Jugador O: <span id="puntos-o">0</span></div>
+        </div>
+
+        <!-- Turno actual -->
+        <p class="turno">Turno de: <strong id="turno-actual">X</strong></p>
+
+        <!-- Tablero 3x3 -->
+        <div class="tablero">
+            <div class="celda" data-fila="0" data-col="0"></div>
+            <div class="celda" data-fila="0" data-col="1"></div>
+            <div class="celda" data-fila="0" data-col="2"></div>
+            <div class="celda" data-fila="1" data-col="0"></div>
+            <div class="celda" data-fila="1" data-col="1"></div>
+            <div class="celda" data-fila="1" data-col="2"></div>
+            <div class="celda" data-fila="2" data-col="0"></div>
+            <div class="celda" data-fila="2" data-col="1"></div>
+            <div class="celda" data-fila="2" data-col="2"></div>
+        </div>
+
+        <button id="reiniciar">Reiniciar Partidas</button>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

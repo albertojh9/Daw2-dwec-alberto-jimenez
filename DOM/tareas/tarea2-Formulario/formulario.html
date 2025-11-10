@@ -1,57 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tarea 2 - Formulario</title>
-  <link rel="stylesheet" href="formulario.css">
-  <meta name="description" content="Formulario con ayuda, validación por campo y validación al enviar">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="formulario.css">
+    <title>Formulario de Registro de Cliente</title>
 </head>
 <body>
-  <div class="container-form">
-    <h1 class="title">Tarea 2 - Formulario</h1>
+    <div class="container">
+        <h1>Formulario de Registro</h1>
+        <p class="subtitle">Complete todos los campos del formulario</p>
+        
+        <form id="formularioCliente">
+            <h2>Datos Personales</h2>
+            
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
 
-    <form id="formCliente" action="#">
-    <fieldset>
-      <legend>Datos personales</legend>
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos">
+            </div>
 
-      <label for="nombre">Nombre:</label>
-      <input id="nombre" name="nombre" type="text" data-help="Introduce tu nombre. Obligatorio." data-validate="required">
-      <br><br>
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni">
+            </div>
 
-      <label for="apellidos">Apellidos:</label>
-      <input id="apellidos" name="apellidos" type="text" data-help="Introduce tus apellidos. Obligatorio." data-validate="required">
-      <br><br>
+            <h2>Cuenta</h2>
 
-      <label for="dni">DNI:</label>
-      <input id="dni" name="dni" type="text" data-help="DNI: 8 dígitos + letra. Ej: 12345678Z" data-validate="dni">
-    </fieldset>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
 
-    <fieldset>
-      <legend>Cuenta</legend>
+            <div class="form-group">
+                <label for="password1">Contraseña:</label>
+                <input type="password" id="password1" name="password1">
+            </div>
 
-      <label for="email">Email:</label>
-      <input id="email" name="email" type="email" data-help="Introduce un email válido (contiene @)." data-validate="email">
-      <br><br>
+            <div class="form-group">
+                <label for="password2">Repetir Contraseña:</label>
+                <input type="password" id="password2" name="password2">
+            </div>
 
-      <label for="pass1">Contraseña:</label>
-      <input id="pass1" name="pass1" type="password" data-help="Introduce una contraseña (obligatoria)." data-validate="required">
-      <br><br>
+            <div class="buttons">
+                <button type="submit">Aceptar</button>
+                <button type="button" id="btnLimpiar">Limpiar</button>
+            </div>
+        </form>
 
-      <label for="pass2">Repetir contraseña:</label>
-      <input id="pass2" name="pass2" type="password" data-help="Repite la contraseña anterior." data-validate="passmatch" data-passmatch-target="pass1">
-    </fieldset>
+        <div id="ayuda">
+            <p></p>
+        </div>
+    </div>
 
-    <p>
-      <button id="btnAceptar" type="submit">Aceptar</button>
-      <button id="btnLimpiar" type="button">Limpiar</button>
-    </p>
-    </form>
-
-    <div id="ayuda"><p id="ayudaTexto">Pasa el cursor o entra en un campo para ver ayuda específica aquí.</p></div>
-  </div>
-
-  <script src="formulario-validaciones.mjs"></script>
-  <script src="formulario.mjs" defer></script>
+    <script type="module" src="formulario.mjs"></script>
 </body>
 </html>
