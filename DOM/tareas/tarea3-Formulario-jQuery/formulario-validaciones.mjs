@@ -67,6 +67,7 @@ export function validarEmail(email) {
  */
 export function validarPasswordsIguales(password1, password2) {
     // Verificar que no estén vacías
+    //El trim verifica que no contengan solo espacios si no caracteres reales
     if (password1.trim().length === 0 || password2.trim().length === 0) {
         return false;
     }
