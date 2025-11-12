@@ -1,0 +1,3 @@
+(5 minutos)
+Corrige los errores para que el programa funcione de acuerdo a la descripción.
+
