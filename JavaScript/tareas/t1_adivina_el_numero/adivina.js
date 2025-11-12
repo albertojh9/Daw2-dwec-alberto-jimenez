@@ -13,13 +13,13 @@ const readline = require('readline').createInterface({
 
 let intento = 1;
 
-console.log(`\n🎮 ¡Adivina el número entre 1 y ${VALOR_MAXIMO}!\n`);
+console.log(`\n¡Adivina el número entre 1 y ${VALOR_MAXIMO}!\n`);
 
 // Función para jugar (recursiva)
 function jugar() {
     // Verificar si se acabaron los intentos
     if (intento > MAX_INTENTOS) {
-        console.log(`\n💀 Game Over. El número era ${numeroSecreto}\n`);
+        console.log(`\n Game Over. El número era ${numeroSecreto}\n`);
         return readline.close();
     }
 
@@ -29,12 +29,12 @@ function jugar() {
         
         // Comprobar si ha acertado
         if (numeroUsuario === numeroSecreto) {
-            console.log(`\n✅ ¡Correcto! El número era ${numeroSecreto}. Lo adivinaste en ${intento} intentos.\n`);
+            console.log(`\n ¡Correcto! El número era ${numeroSecreto}. Lo adivinaste en ${intento} intentos.\n`);
             return readline.close();
         }
         
         // Indicar si el número es mayor o menor
-        console.log(numeroUsuario > numeroSecreto ? "❌ El número secreto es MENOR" : "❌ El número secreto es MAYOR");
+        console.log(numeroUsuario > numeroSecreto ? "El número secreto es MENOR" : "El número secreto es MAYOR");
         
         // Incrementar intento y continuar jugando
         intento++;
