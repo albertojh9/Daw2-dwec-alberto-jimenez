@@ -34,6 +34,14 @@ export class Tabla {
                 $(this.#elementoObjetivo).html(html);
             });  
     }
+
+    /**
+     * Calcula la URL del resurso añadiendo información de paginacion, filtros, etc
+     */
+    #urlRecurso() {
+        return $(this.#url_recurso)?_page${this#paginacion}&_limit=${this.#limite}:"";  
+    }
+
 }
 
 
