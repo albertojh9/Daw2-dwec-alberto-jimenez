@@ -1,54 +1,62 @@
 // js0303. Adivina adivinanza
+// Alumno: Alberto - 2º DAW
 
-// Función para generar números aleatorios
-function generarNumerosAleatorios(cantidad, max) {
-    let numeros = [];
-    for (let i = 0; i < cantidad; i++) {
-        numeros.push(Math.floor(Math.random() * (max + 1)));
-    }
-    return numeros;
+// Generar 10 números aleatorios de 0 a 20
+const numerosAleatorios = [];
+for (let i = 0; i < 10; i++) {
+    numerosAleatorios.push(Math.floor(Math.random() * 21)); // 0 a 20 inclusive
 }
 
-// Función para pedir números al usuario
-function pedirNumeros(cantidad) {
-    let numeros = [];
-    for (let i = 0; i < cantidad; i++) {
-        let numero = parseInt(prompt(`Introduce el número ${i + 1} de ${cantidad}:`));
-        numeros.push(numero);
-    }
-    return numeros;
-}
+// Array para almacenar los números del usuario
+const numerosUsuario = [];
 
-// Función para comprobar aciertos
-function comprobarAciertos(numerosAleatorios, numerosUsuario) {
-    let aciertos = 0;
-    let numerosAcertados = [];
+// Array para almacenar los aciertos
+const aciertos = [];
+
+// Mostrar mensaje de inicio
+alert("¡Bienvenido al juego Adivina Adivinanza!\nHe generado 10 números aleatorios entre 0 y 20.\nTienes que adivinar 5 números.");
+
+// Pedir 5 números al usuario
+for (let i = 1; i <= 5; i++) {
+    let numero;
+    let valido = false;
     
-    for (let numero of numerosUsuario) {
-        if (numerosAleatorios.includes(numero) && !numerosAcertados.includes(numero)) {
-            aciertos++;
-            numerosAcertados.push(numero);
+    // Validar entrada
+    while (!valido) {
+        let entrada = prompt(`Introduce el número ${i} de 5 (entre 0 y 20):`);
+        numero = parseInt(entrada);
+        
+        if (isNaN(numero)) {
+            alert("Por favor, introduce un número válido");
+        } else if (numero < 0 || numero > 20) {
+            alert("El número debe estar entre 0 y 20");
+        } else {
+            valido = true;
+            numerosUsuario.push(numero);
         }
     }
-    
-    return { aciertos, numerosAcertados };
 }
 
-// Función para mostrar resultados
-function mostrarResultados(numerosAleatorios, numerosUsuario, resultado) {
-    console.log(`Números generados: ${numerosAleatorios.join(', ')}`);
-    console.log(`Tus números: ${numerosUsuario.join(', ')}`);
-    console.log(`Número de aciertos: ${resultado.aciertos}`);
-    console.log(`Números acertados: ${resultado.numerosAcertados.join(', ')}`);
+// Comprobar aciertos
+for (let numeroUsuario of numerosUsuario) {
+    if (numerosAleatorios.includes(numeroUsuario)) {
+        // Solo añadir si no está ya en aciertos (evitar duplicados)
+        if (!aciertos.includes(numeroUsuario)) {
+            aciertos.push(numeroUsuario);
+        }
+    }
 }
 
-// Programa principal
-function jugar() {
-    let numerosAleatorios = generarNumerosAleatorios(10, 20);
-    let numerosUsuario = pedirNumeros(5);
-    let resultado = comprobarAciertos(numerosAleatorios, numerosUsuario);
-    mostrarResultados(numerosAleatorios, numerosUsuario, resultado);
+// Mostrar resultados
+let mensaje = "=== RESULTADOS ===\n\n";
+mensaje += `Números generados: [${numerosAleatorios.join(", ")}]\n`;
+mensaje += `Tus números: [${numerosUsuario.join(", ")}]\n\n`;
+mensaje += `Número de aciertos: ${aciertos.length}\n`;
+
+if (aciertos.length > 0) {
+    mensaje += `Números acertados: [${aciertos.join(", ")}]`;
+} else {
+    mensaje += "No has acertado ningún número";
 }
 
-// Ejecutar el juego
-jugar();
+alert(mensaje);
