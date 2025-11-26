@@ -1,87 +1,45 @@
-// Clase Cuenta
+// js0603 - Clase Cuenta (versión compacta)
+"use strict";
+
 class Cuenta {
-    // Dos constructores como se solicita
-    constructor(titular, cantidad) {
-        this.titular = titular;
-        this.cantidad = cantidad || 0; // Si no se proporciona cantidad, será 0
+    constructor(propietario, saldo = 0) {
+        if (!propietario) throw new Error("El titular debe ser obligatorio");
+        this.propietario = propietario;
+        this.saldo = saldo;
     }
     
-    // Segundo constructor (en JavaScript se simula con métodos estáticos)
-    static crearCuentaSoloTitular(titular) {
-        return new Cuenta(titular, 0);
-    }
-
-    // Métodos GET
-    getTitular() {
-        return this.titular;
-    }
-
-    getCantidad() {
-        return this.cantidad;
-    }
-
-    // Métodos SET
-    setTitular(titular) {
-        this.titular = titular;
-    }
-
-    setCantidad(cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    // Método ingresar - si la cantidad es negativa, no hace nada
-    ingresar(cantidad) {
-        if (cantidad > 0) {
-            this.cantidad += cantidad;
+    getTitular() { return this.propietario; }
+    setTitular(nuevo) { this.propietario = nuevo; }
+    getCantidad() { return "Saldo actual: " + this.saldo; }
+    setCantidad(nuevo) { this.saldo = nuevo; }
+    toString() { return "Titular: " + this.propietario + "\nCantidad: " + this.saldo; }
+    
+    ingresar(monto) {
+        if (monto < 0) console.log("No se pudo hacer la operación");
+        else {
+            this.saldo += monto;
+            console.log("Ingresando dinero...la operación se realizó correctamente");
         }
     }
-
-    // Método retirar - si queda negativo, se establece a 0
-    retirar(cantidad) {
-        const nuevoSaldo = this.cantidad - cantidad;
-        if (nuevoSaldo < 0) {
-            this.cantidad = 0; // Imposible dejar con importe negativo
+    
+    retirar(monto) {
+        if (this.saldo - monto < 0) {
+            this.saldo = 0;
+            console.log("La cantidad de dinero actualmente en la cuenta es 0");
         } else {
-            this.cantidad = nuevoSaldo;
+            this.saldo -= monto;
+            console.log("Retirando dinero...la operación se realizó correctamente");
         }
-    }
-
-    // Método toString
-    toString() {
-        return `Titular: ${this.titular}, Cantidad: ${this.cantidad.toFixed(2)}€`;
     }
 }
 
-// ===== PRUEBA DEL EJERCICIO =====
-
-// Crear una cuenta con el constructor que tiene titular y saldo inicial
-console.log("=== CUENTA CON TITULAR Y SALDO INICIAL ===");
-const cuenta1 = new Cuenta("Juan", 100);
-console.log(cuenta1.toString());
-
-// Probar el segundo constructor (solo titular)
-console.log("\n=== CUENTA SOLO CON TITULAR ===");
-const cuenta2 = Cuenta.crearCuentaSoloTitular("María");
-console.log(cuenta2.toString());
-
-// Prueba de las operaciones solicitadas
-console.log("\n=== PRUEBA DE OPERACIONES ===");
-const cuenta = new Cuenta("Carlos", 100);
-console.log("Estado inicial: " + cuenta.toString());
-
-cuenta.ingresar(10);
-console.log("Después de ingresar 10: " + cuenta.toString());
-
-cuenta.retirar(50);
-console.log("Después de retirar 50: " + cuenta.toString());
-
-cuenta.ingresar(15);
-console.log("Después de ingresar 15: " + cuenta.toString());
-
-cuenta.retirar(100);
-console.log("Después de retirar 100: " + cuenta.toString());
-
-// Prueba adicional: intentar ingresar cantidad negativa
-console.log("\n=== PRUEBA INGRESO NEGATIVO ===");
-cuenta.ingresar(-20);
-console.log("Después de intentar ingresar -20: " + cuenta.toString());
+let cuentaAlberto = new Cuenta("Alberto", 100);
+console.log(cuentaAlberto.ingresar(10));
+console.log(cuentaAlberto.getCantidad());
+console.log(cuentaAlberto.retirar(50));
+console.log(cuentaAlberto.getCantidad());
+console.log(cuentaAlberto.ingresar(10));
+console.log(cuentaAlberto.getCantidad());
+console.log(cuentaAlberto.retirar(50));
+console.log(cuentaAlberto.getCantidad());
+console.log(cuentaAlberto.retirar(100));

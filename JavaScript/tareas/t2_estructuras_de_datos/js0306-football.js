@@ -1,32 +1,84 @@
-// Crea la interfaz para leer desde consola
-const rl = require("readline").createInterface({ input: process.stdin, output: process.stdout });
+// Football Manager - Gestión de alineaciones
+// 1. Configurar jugadores (número-nombre)
+// 2. Consultar jugadores por número
 
-// Objeto para guardar los jugadores
-const equipo = {};
+"use strict";
 
-// Pide datos de jugadores al usuario
-function pedirJugador() {
-  rl.question("Número (vacío para terminar): ", n => {
-    // Si el número está vacío, pasa a consultar
-    if (!n.trim()) return consultar();
-    rl.question("Nombre: ", nom => {
-      // Guarda el jugador en el objeto
-      equipo[n] = nom || "Sin nombre";
-      pedirJugador();
-    });
-  });
+// Importar prompt para entrada de datos
+const prompt = require('prompt-sync')();
+
+// Map para almacenar plantilla: número=clave, nombre=valor
+const plantillaEquipo = new Map();
+
+console.log("=== FOOTBALL MANAGER ===");
+console.log("Sistema de gestión de alineaciones");
+
+// ========== FASE 1: CONFIGURACIÓN ==========
+// Añadir jugadores hasta introducir 0 o cadena vacía
+
+console.log("\n--- CONFIGURACIÓN DEL EQUIPO ---");
+console.log("Introduce los datos de los jugadores (número 0 para terminar):");
+
+// Variable de control - inicia en -1 para entrar al bucle
+let numeroJugador = -1;
+
+// Bucle principal - continúa hasta que se introduzca 0
+while (numeroJugador !== 0) {
+    // Pedir número de camiseta (convertir a entero)
+    numeroJugador = parseInt(prompt("Número de camiseta: "));
+    
+    // Si es 0, terminar configuración
+    if (numeroJugador === 0) {
+        break;
+    }
+    
+    // Verificar si el número ya existe
+    if (plantillaEquipo.has(numeroJugador)) {
+        // Mostrar qué jugador tiene ese número
+        console.log("Ese número ya pertenece a: " + plantillaEquipo.get(numeroJugador));
+    } else {
+        // Pedir nombre del jugador
+        let nombreJugador = prompt("Nombre del jugador: ");
+        
+        // Si está vacío o es null, terminar
+        if (nombreJugador === "" || nombreJugador === null) {
+            break;
+        }
+        
+        // Guardar jugador en el Map
+        plantillaEquipo.set(numeroJugador, nombreJugador);
+        console.log("Jugador registrado exitosamente");
+    }
 }
 
-// Permite consultar jugadores por número
-function consultar() {
-  rl.question("\nConsulta número (0 para salir): ", n => {
-    // Si es 0, termina el programa
-    if (n === "0") return rl.close();
-    // Muestra el nombre o mensaje si no existe
-    console.log(equipo[n] ? `Jugador: ${equipo[n]}` : "No existe ese jugador.");
-    consultar();
-  });
+// ========== FASE 2: CONSULTAS ==========
+// Buscar jugadores por número hasta introducir 0
+
+console.log("\n--- CONSULTA DE JUGADORES ---");
+console.log("Introduce un número para ver el jugador asignado (0 para salir):");
+
+// Variable de control - inicia en -1 para entrar al bucle
+let numeroBusqueda = -1;
+
+// Bucle de consultas hasta introducir 0
+while (numeroBusqueda !== 0) {
+    // Pedir número a buscar
+    numeroBusqueda = parseInt(prompt("Buscar jugador número: "));
+    
+    // Si es 0, salir
+    if (numeroBusqueda === 0) {
+        break;
+    }
+    
+    // Buscar jugador en el Map
+    let jugadorEncontrado = plantillaEquipo.get(numeroBusqueda);
+    
+    // Mostrar resultado
+    if (jugadorEncontrado) {
+        console.log("El jugador con ese número es: " + jugadorEncontrado);
+    } else {
+        console.log("No existe jugador con el número " + numeroBusqueda);
+    }
 }
 
-// Inicia el proceso
-pedirJugador();
+console.log("\n¡Gracias por usar el Football Manager!");
