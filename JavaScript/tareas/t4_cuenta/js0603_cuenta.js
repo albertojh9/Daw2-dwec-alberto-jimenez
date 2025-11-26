@@ -1,45 +1,65 @@
-// js0603 - Clase Cuenta (versión compacta)
-"use strict";
-
 class Cuenta {
-    constructor(propietario, saldo = 0) {
-        if (!propietario) throw new Error("El titular debe ser obligatorio");
-        this.propietario = propietario;
-        this.saldo = saldo;
+    // Constructor: titular obligatorio, cantidad opcional (0 por defecto)
+    constructor(titular, cantidad = 0) {
+        this.titular = titular;
+        this.cantidad = cantidad;
     }
-    
-    getTitular() { return this.propietario; }
-    setTitular(nuevo) { this.propietario = nuevo; }
-    getCantidad() { return "Saldo actual: " + this.saldo; }
-    setCantidad(nuevo) { this.saldo = nuevo; }
-    toString() { return "Titular: " + this.propietario + "\nCantidad: " + this.saldo; }
-    
-    ingresar(monto) {
-        if (monto < 0) console.log("No se pudo hacer la operación");
-        else {
-            this.saldo += monto;
-            console.log("Ingresando dinero...la operación se realizó correctamente");
-        }
+
+    // Obtiene el nombre del titular de la cuenta
+    getTitular() {
+        return this.titular;
     }
-    
-    retirar(monto) {
-        if (this.saldo - monto < 0) {
-            this.saldo = 0;
-            console.log("La cantidad de dinero actualmente en la cuenta es 0");
+
+    // Obtiene la cantidad de dinero disponible en la cuenta
+    getCantidad() {
+        return this.cantidad;
+    }
+
+    // Establece el nombre del titular de la cuenta
+    setTitular(titular) {
+        this.titular = titular;
+    }
+
+    // Establece la cantidad de dinero en la cuenta
+    setCantidad(cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    // Devuelve una representación en cadena de texto de la cuenta
+    toString() {
+        return `Titular: ${this.titular}, Cantidad: ${this.cantidad}€`;
+    }
+
+    // Ingresa una cantidad de dinero en la cuenta (solo cantidades positivas)
+    ingresar(cantidad) {
+        if (cantidad > 0) {
+            this.cantidad += cantidad;
+            console.log(`Ingreso realizado. Saldo actual: ${this.cantidad}€`);
         } else {
-            this.saldo -= monto;
-            console.log("Retirando dinero...la operación se realizó correctamente");
+            console.log(`No se puede ingresar una cantidad negativa. Saldo actual: ${this.cantidad}€`);
         }
+    }
+
+    // Retira una cantidad de dinero de la cuenta (permite saldo negativo)
+    retirar(cantidad) {
+        this.cantidad -= cantidad;
+        console.log(`Retirada realizada. Saldo actual: ${this.cantidad}€`);
     }
 }
 
-let cuentaAlberto = new Cuenta("Alberto", 100);
-console.log(cuentaAlberto.ingresar(10));
-console.log(cuentaAlberto.getCantidad());
-console.log(cuentaAlberto.retirar(50));
-console.log(cuentaAlberto.getCantidad());
-console.log(cuentaAlberto.ingresar(10));
-console.log(cuentaAlberto.getCantidad());
-console.log(cuentaAlberto.retirar(50));
-console.log(cuentaAlberto.getCantidad());
-console.log(cuentaAlberto.retirar(100));
+// Constructor con cantidad
+let cuenta2 = new Cuenta("Alberto", 100);
+console.log(cuenta2.toString()); // Titular: Alberto, Cantidad: 500€
+
+// Ingresar dinero
+cuenta2.ingresar(10); 
+
+// Retirar dinero
+cuenta2.retirar(50);
+
+// Ingresar dinero
+cuenta2.ingresar(15); 
+
+// Retirar dinero
+cuenta2.retirar(100); 
+

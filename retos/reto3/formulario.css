@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+h2 {
+    color: #667eea;
+    margin: 20px 0 15px 0;
+    font-size: 18px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+input.error {
+    border-color: #e74c3c;
+    background-color: #ffe6e6;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+}
+
+button[type="submit"] {
+    background-color: #667eea;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #5568d3;
+}
+
+button[type="button"] {
+    background-color: #95a5a6;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #7f8c8d;
+}
+
+#ayuda {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e8f4f8;
+    border-left: 4px solid #3498db;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+#ayuda.error-message {
+    background-color: #ffe6e6;
+    border-left-color: #e74c3c;
+}
+
+#ayuda p {
+    color: #333;
+    font-size: 14px;
+    margin: 0;
+}
+
+.volver {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}
+
+.info-box {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.info-box strong {
+    color: #856404;
+}

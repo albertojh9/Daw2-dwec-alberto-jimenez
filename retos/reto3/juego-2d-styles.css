@@ -1,0 +1,184 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #888;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+#gameContainer {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Pantalla de menú */
+#menuScreen {
+    background: white;
+    border: 2px solid #333;
+    padding: 30px;
+    text-align: center;
+}
+
+#menuScreen h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#menuScreen p {
+    margin-bottom: 20px;
+}
+
+.info-box {
+    background: #d4edda;
+    border: 1px solid #28a745;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.info-box strong {
+    color: #155724;
+}
+
+/* Botones de dificultad */
+.difficulty-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: 2px solid #333;
+    cursor: pointer;
+    background: white;
+    transition: all 0.2s;
+}
+
+.difficulty-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* Pantalla de juego */
+#gameScreen {
+    display: none;
+}
+
+/* Panel de información del juego */
+#gameInfo {
+    background: white;
+    border: 2px solid #333;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#gameInfo div {
+    text-align: center;
+}
+
+#gameInfo h3 {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+#gameInfo p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Área de juego */
+#gameArea {
+    background: white;
+    border: 2px solid #333;
+    width: 600px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Bloques clickeables */
+.block {
+    position: absolute;
+    background-color: black;
+    cursor: pointer;
+    display: none;
+    transition: all 0.1s;
+}
+
+.block:hover {
+    opacity: 0.8;
+}
+
+/* Segundo bloque (solo en modo fácil) */
+#clickBlock2 {
+    background-color: #333;
+}
+
+/* Pantalla de Game Over */
+#gameOverScreen {
+    display: none;
+    background: white;
+    border: 2px solid #333;
+    padding: 30px;
+    text-align: center;
+}
+
+#gameOverScreen h1 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+#gameOverScreen p {
+    margin-bottom: 10px;
+}
+
+/* Botón de reinicio */
+#restartBtn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border: 2px solid #333;
+    cursor: pointer;
+    background: white;
+}
+
+#restartBtn:hover {
+    background: #f0f0f0;
+}
+
+/* Mensajes temporales */
+#message {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+    min-height: 25px;
+    font-size: 18px;
+}
+
+/* Botón volver */
+.volver {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}

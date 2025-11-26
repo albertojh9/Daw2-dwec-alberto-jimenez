@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Raya - Perdedor Empieza</title>
+    <link rel="stylesheet" href="juego-3-raya.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Tres en Raya</h1>        
+        
+        <div class="marcador">
+            <div>Jugador X: <span id="puntos-x">0</span></div>
+            <div>Jugador O: <span id="puntos-o">0</span></div>
+        </div>
+
+        <p class="turno">Turno de: <strong id="turno-actual">X</strong></p>
+
+        <div class="tablero">
+            <div class="celda" data-fila="0" data-col="0"></div>
+            <div class="celda" data-fila="0" data-col="1"></div>
+            <div class="celda" data-fila="0" data-col="2"></div>
+            <div class="celda" data-fila="1" data-col="0"></div>
+            <div class="celda" data-fila="1" data-col="1"></div>
+            <div class="celda" data-fila="1" data-col="2"></div>
+            <div class="celda" data-fila="2" data-col="0"></div>
+            <div class="celda" data-fila="2" data-col="1"></div>
+            <div class="celda" data-fila="2" data-col="2"></div>
+        </div>
+
+        <button id="reiniciar">Reiniciar Todo</button>
+        
+        <a href="index.html" class="volver">← Volver al menú</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="tres-en-raya.js"></script>
+</body>
+</html>

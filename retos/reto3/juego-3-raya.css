@@ -1,0 +1,133 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .contenedor {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .marcador {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+        
+        .marcador div {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .turno {
+            margin: 15px 0;
+            font-size: 18px;
+            color: #667eea;
+        }
+        
+        .turno strong {
+            font-size: 24px;
+        }
+        
+        .tablero {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 5px;
+            margin: 20px auto;
+            background: #667eea;
+            padding: 5px;
+            border-radius: 8px;
+        }
+        
+        .celda {
+            background: white;
+            border: none;
+            font-size: 48px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .celda:hover:not(.ocupada) {
+            background: #f0f0f0;
+        }
+        
+        .celda.ocupada {
+            cursor: not-allowed;
+        }
+        
+        .celda.x {
+            color: #e74c3c;
+        }
+        
+        .celda.o {
+            color: #3498db;
+        }
+        
+        .celda.ganadora {
+            background: #2ecc71 !important;
+            animation: pulse 0.5s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        .volver {
+            display: block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .info-box {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .info-box strong {
+            color: #155724;
+        }

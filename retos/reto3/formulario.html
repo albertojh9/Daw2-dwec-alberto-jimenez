@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario 4 Dígitos - Reto 3</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario con Validación</h1>
+        <p class="subtitle">Complete todos los campos del formulario</p>
+        
+        <form id="formularioCliente">
+            <h2>Datos Personales</h2>
+            
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos">
+            </div>
+
+            <div class="form-group">
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" name="dni">
+            </div>
+
+            <div class="form-group">
+                <label for="codigo">Código (4 dígitos):</label>
+                <input type="text" id="codigo" name="codigo" maxlength="4" placeholder="0000">
+            </div>
+
+            <h2>Cuenta</h2>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password1">Contraseña:</label>
+                <input type="password" id="password1" name="password1">
+            </div>
+
+            <div class="form-group">
+                <label for="password2">Repetir Contraseña:</label>
+                <input type="password" id="password2" name="password2">
+            </div>
+
+            <div class="buttons">
+                <button type="submit">Aceptar</button>
+                <button type="button" id="btnLimpiar">Limpiar</button>
+            </div>
+        </form>
+
+        <div id="ayuda">
+            <p></p>
+        </div>
+
+        <a href="index.html" class="volver">← Volver al menú</a>
+    </div>
+
+    <script type="module" src="formulario.mjs"></script>
+</body>
+</html>
