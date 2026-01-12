@@ -1,0 +1,57 @@
+{
+  "personas": [
+    {
+      "id": 1,
+      "nombre": "Pacosadsadsa",
+      "apellidos": "García Fuentessasad",
+      "empresa": "IES Castelar"
+    },
+    {
+      "nombre": "Miguel",
+      "apellidos": "Sanchez",
+      "id": 3
+    },
+    {
+      "nombre": "Miguel",
+      "apellidos": "Sanchez",
+      "id": 4
+    },
+    {
+      "nombre": "gghgf",
+      "apellidos": "gfhgf",
+      "empresa": "gfhgf",
+      "id": 8
+    }
+  ],
+  "telefonos": [
+    {
+      "id": 1,
+      "numero": "666 777 888",
+      "personaId": 1
+    }
+  ],
+  "correos": [
+    {
+      "id": "1",
+      "correo": "micorreo@iescastelar.com",
+      "personaId": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "manolo@mail.com",
+      "password": "$2a$10$yHZqlRkKrzcqllZddQdEi.r1o1aRKFoEyasPGsrBIMLk..j5J4EYy",
+      "id": 1
+    },
+    {
+      "email": "paco@mail.com",
+      "password": "$2a$10$NtByBEzddWZ9bW4TQbX2xe/HGduULQu6c.j2OyVZOjyEm.MH7HpQO",
+      "id": 2
+    },
+    {
+      "email": "juanjo@mail.com",
+      "password": "$2a$10$T5bovzkN4zy8UthpQfSg9OfJ2bU2Hs3PDZTpdl.ufdcg5DBphIzeS",
+      "id": 3
+    }
+  ]
+}

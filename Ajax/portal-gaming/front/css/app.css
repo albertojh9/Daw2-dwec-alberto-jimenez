@@ -1,0 +1,57 @@
+/* Estilos basicos para el proyecto de videojuegos
+   Alberto Jimenez - 2ºDAW */
+
+/* estilos generales */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* para los campos con errores */
+.error {
+    border: 2px solid red !important;
+}
+
+/* card del login */
+.login-card {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* tabla */
+.table {
+    background: white;
+}
+
+.table thead th {
+    background-color: #343a40;
+    color: white;
+}
+
+/* formularios */
+.form-control {
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: none;
+}
+
+/* botones */
+.btn {
+    border-radius: 3px;
+}
+
+/* espaciado general */
+.mt-4 {
+    margin-top: 20px;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}

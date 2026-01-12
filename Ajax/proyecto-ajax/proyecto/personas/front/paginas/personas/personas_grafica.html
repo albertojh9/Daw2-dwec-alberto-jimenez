@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas - Personas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../js/environment.js" defer></script>
+    <script src="../../js/app.js" defer></script>
+    <script type="module" src="personas_grafica.mjs"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-person-lines-fill"></i> Gestión de Personas</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="personas.html"><i class="bi bi-list"></i> Listado Principal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personas_alfabetico.html"><i class="bi bi-alphabet"></i> Listado Alfabético</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personas_busqueda.html"><i class="bi bi-search"></i> Búsqueda Avanzada</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="personas_grafica.html"><i class="bi bi-bar-chart"></i> Estadísticas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="componente_demo.html"><i class="bi bi-ui-checks"></i> Demo Componente</a></li>
+                </ul>
+                <div class="d-flex">
+                    <button id="btCerrarSesion" class="btn btn-warning"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row mb-4">
+            <div class="col"><h2><i class="bi bi-bar-chart-fill"></i> Estadísticas de Personas</h2></div>
+            <div class="col-auto"><button id="btVolver" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Volver</button></div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-white bg-primary">
+                    <div class="card-body"><h5>Total</h5><h2 id="totalPersonas" class="display-4">0</h2></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-success">
+                    <div class="card-body"><h5>Con Empresa</h5><h2 id="conEmpresa" class="display-4">0</h2></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body"><h5>Sin Empresa</h5><h2 id="sinEmpresa" class="display-4">0</h2></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-white bg-info">
+                    <div class="card-body"><h5>Empresas Únicas</h5><h2 id="empresasUnicas" class="display-4">0</h2></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white"><h5>Top 5 Empresas</h5></div>
+                    <div class="card-body"><canvas id="graficaEmpresas"></canvas></div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white"><h5>Distribución</h5></div>
+                    <div class="card-body"><canvas id="graficaDistribucion"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-info text-white"><h5>Distribución Alfabética</h5></div>
+                    <div class="card-body"><canvas id="graficaAlfabetica"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

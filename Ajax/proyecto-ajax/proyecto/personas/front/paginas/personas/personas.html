@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Personas</title>
+
+    <!-- Hojas de estilos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Dependencias JavaScript-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			crossorigin="anonymous" defer>
+    </script>
+
+    <!-- Dependencias relacionadas con bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/3.3.3/json2html.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.json2html/1.2.0/jquery.json2html.js" defer></script>
+
+    <!-- Carga los parámetros de configuración -->
+    <script src="../../js/environment.js" defer></script>
+    <script src="../../js/app.js" defer></script>
+
+    <script type="module" src="personas.mjs"></script>
+</head>
+<body>   
+
+    <!-- Barra de navegación Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-person-lines-fill"></i> Gestión de Personas
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="personas.html">
+                            <i class="bi bi-list"></i> Listado Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personas_alfabetico.html">
+                            <i class="bi bi-alphabet"></i> Listado Alfabético
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personas_busqueda.html">
+                            <i class="bi bi-search"></i> Búsqueda Avanzada
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personas_grafica.html">
+                            <i class="bi bi-bar-chart"></i> Estadísticas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="componente_demo.html">
+                            <i class="bi bi-ui-checks"></i> Demo Componente
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button id="btCerrarSesion" type="button" class="btn btn-warning">
+                        <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Creo un contenedor que se estira todo el ancho -->
+    <div class="container-fluid m-3">
+        <div class="row justify-content-between align-items-center">
+    
+            <!-- Buscador -->
+            <div id="buscador" class="col-md-4"></div>
+    
+            <!-- Botón de ordenación ascendente/descendente -->
+            <div class="col-md-3">
+                <button id="btOrdenar" type="button" class="btn btn-outline-primary w-100">
+                    <i class="bi bi-sort-alpha-down"></i> Ascendente
+                </button>
+            </div>
+
+            <!-- Para dar de alta nuevas personas -->
+            <div class="col-auto">
+                <button id="btAnadir" type="button" class="btn btn-success rounded-circle">
+                    <i class="bi-person-plus"></i>
+                </button>      
+            </div>  
+        
+        </div>
+    </div>
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+              <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Empresa</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Eliminar</th>
+              </tr>               
+        </thead>
+        <tbody id="personas">
+            <!-- Aquí nuestro código va a insertar las personas -->
+        </tbody>
+    </table>
+
+    <!-- Separador. Lo pongo para que la página quede mejor cuando no hay datos. -->
+    <hr class="mt-2 mb-2 text-secondary" />
+
+    <!-- Espacio para colocar el paginador -->
+    <div id="paginador"></div>
+
+
+</body>
+</html>

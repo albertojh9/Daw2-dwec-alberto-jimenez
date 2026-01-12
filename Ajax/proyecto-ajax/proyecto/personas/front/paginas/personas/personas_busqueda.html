@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda Avanzada - Personas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" defer></script>
+    <script src="../../js/environment.js" defer></script>
+    <script src="../../js/app.js" defer></script>
+    <script type="module" src="personas_busqueda.mjs"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-person-lines-fill"></i> Gestión de Personas</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="personas.html"><i class="bi bi-list"></i> Listado Principal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personas_alfabetico.html"><i class="bi bi-alphabet"></i> Listado Alfabético</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="personas_busqueda.html"><i class="bi bi-search"></i> Búsqueda Avanzada</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personas_grafica.html"><i class="bi bi-bar-chart"></i> Estadísticas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="componente_demo.html"><i class="bi bi-ui-checks"></i> Demo Componente</a></li>
+                </ul>
+                <div class="d-flex">
+                    <button id="btCerrarSesion" type="button" class="btn btn-warning"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid m-3">
+        <div class="row justify-content-between align-items-center mb-3">
+            <div class="col"><h2><i class="bi bi-search"></i> Búsqueda Avanzada de Personas</h2></div>
+            <div class="col-auto"><button id="btVolver" class="btn btn-primary"><i class="bi bi-arrow-left"></i> Volver</button></div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="text" id="campoBusqueda" class="form-control" placeholder="Buscar en nombre, apellidos o empresa...">
+                </div>
+                <small class="text-muted">La búsqueda se realiza en tiempo real</small>
+            </div>
+            <div class="col-md-3">
+                <select id="selectorOrden" class="form-select">
+                    <option value="nombre">Ordenar por Nombre</option>
+                    <option value="apellidos">Ordenar por Apellidos</option>
+                    <option value="empresa">Ordenar por Empresa</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="btn-group w-100">
+                    <button id="btnAscendente" class="btn btn-outline-secondary active"><i class="bi bi-sort-alpha-down"></i> Asc</button>
+                    <button id="btnDescendente" class="btn btn-outline-secondary"><i class="bi bi-sort-alpha-up"></i> Desc</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="alert alert-info"><i class="bi bi-info-circle"></i> Mostrando <strong id="numResultados">0</strong> persona(s)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr><th>Nombre</th><th>Apellidos</th><th>Empresa</th></tr>
+            </thead>
+            <tbody id="personas"></tbody>
+        </table>
+    </div>
+
+    <div id="sinResultados" class="container-fluid text-center mt-4" style="display:none;">
+        <p class="text-muted">No se encontraron personas que coincidan con tu búsqueda.</p>
+    </div>
+</body>
+</html>
