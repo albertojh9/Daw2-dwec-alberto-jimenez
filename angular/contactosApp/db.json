@@ -1,0 +1,74 @@
+{
+  "contactos": [
+    {
+      "id": 1,
+      "nombre": "María",
+      "apellidos": "García López",
+      "empresa": "TechSolutions S.L.",
+      "telefono": 612345678
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos",
+      "apellidos": "Martínez Ruiz",
+      "empresa": "InnovaTech",
+      "telefono": 623456789
+    },
+    {
+      "id": 3,
+      "nombre": "Ana",
+      "apellidos": "Rodríguez Sánchez",
+      "empresa": "Digital Marketing Pro",
+      "telefono": 634567890
+    },
+    {
+      "id": 4,
+      "nombre": "Javier",
+      "apellidos": "Fernández Pérez",
+      "empresa": "WebDev Studio",
+      "telefono": 645678901
+    },
+    {
+      "id": 5,
+      "nombre": "Laura",
+      "apellidos": "González Moreno",
+      "empresa": "Cloud Services Inc",
+      "telefono": 656789012
+    },
+    {
+      "id": 6,
+      "nombre": "David",
+      "apellidos": "López Jiménez",
+      "empresa": "DataAnalytics S.A.",
+      "telefono": 667890123
+    },
+    {
+      "id": 7,
+      "nombre": "Carmen",
+      "apellidos": "Díaz Torres",
+      "empresa": "Creative Design",
+      "telefono": 678901234
+    },
+    {
+      "id": 8,
+      "nombre": "Miguel",
+      "apellidos": "Ruiz Navarro",
+      "empresa": "Mobile Apps Co.",
+      "telefono": 689012345
+    },
+    {
+      "id": 9,
+      "nombre": "Isabel",
+      "apellidos": "Serrano Vega",
+      "empresa": "AI Solutions",
+      "telefono": 690123456
+    },
+    {
+      "id": 10,
+      "nombre": "Pablo",
+      "apellidos": "Moreno Castro",
+      "empresa": "Cybersecurity Plus",
+      "telefono": 601234567
+    }
+  ]
+}

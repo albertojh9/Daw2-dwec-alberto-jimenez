@@ -1,0 +1,43 @@
+<!-- Aquí está la tabla donde se van a insetar los resultados -->
+<table class="table table-bordered table-striped text-center table-light table-hover align-items-center">
+
+    <!-- Encabezado de la tabla -->
+    <thead class="table text-white bg-primary">
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Teléfono</th>
+            <th scope="col"></th> <!-- Mostrar detalles -->
+            <th scope="col"></th> <!-- Editar -->
+            <th scope="col"></th> <!-- Eliminar contacto -->
+        </tr>
+    </thead>
+    
+    <!-- 
+        Cuerpo de la tabla. Aquí es donde se van a insertar las tareas
+     -->
+    <tbody>
+        <tr *ngFor="let contacto of contactos; let i = index">
+            <td>{{ contacto.id }}</td>
+            <td>{{ contacto.nombre }}</td>
+            <td>{{ contacto.apellidos }}</td>
+            <td>{{ contacto.empresa }}</td>
+            <td>{{ contacto.telefono }}</td>
+            <td>
+                <!-- Enlace a ver el contacto -->
+                <i [routerLink]="['../ver', contacto.id ]" class="btn btn-success bi bi-eye"></i>
+            </td>                
+            <td>
+                <!-- Enlace a la edición de la tarea -->                                
+                <i [routerLink]="['../editar', contacto.id ]" class="btn btn-warning bi bi-pencil"></i>
+            </td>    
+            <td>
+                <!-- Eliminar la contacto -->
+                <i (click)="borrarContacto(i)" class="btn btn-danger bi bi-trash"></i>
+            </td>
+        </tr>        
+    </tbody>
+</table>
+
