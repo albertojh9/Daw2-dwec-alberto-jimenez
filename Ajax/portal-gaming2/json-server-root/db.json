@@ -1,0 +1,135 @@
+{
+  "videojuegos": [
+    {
+      "id": 1,
+      "titulo": "The Legend of Zelda: Breath of the Wild",
+      "desarrolladora": "Nintendo",
+      "genero": "Aventura",
+      "anoLanzamiento": 2017,
+      "precio": 59.99,
+      "puntuacion": 9.7,
+      "web": "https://zelda.nintendo.com/breath-of-the-wild"
+    },
+    {
+      "id": 2,
+      "titulo": "Red Dead Redemption 2",
+      "desarrolladora": "Rockstar Games",
+      "genero": "Acción",
+      "anoLanzamiento": 2018,
+      "precio": 39.99,
+      "puntuacion": 9.5,
+      "web": "https://reddeadredemption.com"
+    },
+    {
+      "id": 3,
+      "titulo": "Minecraft",
+      "desarrolladora": "Mojang Studios",
+      "genero": "Sandbox",
+      "anoLanzamiento": 2011,
+      "precio": 26.95,
+      "puntuacion": 9.0,
+      "web": "https://minecraft.net"
+    },
+    {
+      "id": 4,
+      "titulo": "FIFA 24",
+      "desarrolladora": "EA Sports",
+      "genero": "Deportes",
+      "anoLanzamiento": 2023,
+      "precio": 69.99,
+      "puntuacion": 8.2,
+      "web": "https://ea.com/fifa"
+    },
+    {
+      "id": 5,
+      "titulo": "Cyberpunk 2077",
+      "desarrolladora": "CD Projekt Red",
+      "genero": "RPG",
+      "anoLanzamiento": 2020,
+      "precio": 29.99,
+      "puntuacion": 8.8,
+      "web": "https://cyberpunk.net"
+    }
+  ],
+  "desarrolladoras": [
+    {
+      "id": 1,
+      "nombre": "Nintendo",
+      "pais": "Japón",
+      "fundacion": 1889
+    },
+    {
+      "id": 2,
+      "nombre": "Rockstar Games",
+      "pais": "Estados Unidos",
+      "fundacion": 1998
+    },
+    {
+      "id": 3,
+      "nombre": "Mojang Studios",
+      "pais": "Suecia",
+      "fundacion": 2009
+    },
+    {
+      "id": 4,
+      "nombre": "EA Sports",
+      "pais": "Estados Unidos",
+      "fundacion": 1991
+    },
+    {
+      "id": 5,
+      "nombre": "CD Projekt Red",
+      "pais": "Polonia",
+      "fundacion": 1994
+    }
+  ],
+  "generos": [
+    {
+      "id": 1,
+      "nombre": "Aventura",
+      "descripcion": "Juegos centrados en exploración y narrativa"
+    },
+    {
+      "id": 2,
+      "nombre": "Acción",
+      "descripcion": "Juegos con énfasis en combate y reflejos"
+    },
+    {
+      "id": 3,
+      "nombre": "RPG",
+      "descripcion": "Juegos de rol con progresión de personaje"
+    },
+    {
+      "id": 4,
+      "nombre": "Deportes",
+      "descripcion": "Simulaciones de deportes reales"
+    },
+    {
+      "id": 5,
+      "nombre": "Sandbox",
+      "descripcion": "Juegos de construcción y creatividad libre"
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$3euPcmQFCiblsZeEu5s7p.3OX0TxCMVSuV6Pq1U8kWCVLpKXkZ1Q6",
+      "id": 1
+    },
+    {
+      "email": "manolo@mail.com",
+      "password": "$2a$10$yHZqlRkKrzcqllZddQdEi.r1o1aRKFoEyasPGsrBIMLk..j5J4EYy",
+      "id": 2
+    },
+    {
+      "email": "paco@mail.com",
+      "password": "$2a$10$NtByBEzddWZ9bW4TQbX2xe/HGduULQu6c.j2OyVZOjyEm.MH7HpQO",
+      "id": 3
+    },
+    {
+      "email": "juanjo@mail.com",
+      "password": "$2a$10$T5bovzkN4zy8UthpQfSg9OfJ2bU2Hs3PDZTpdl.ufdcg5DBphIzeS",
+      "id": 4
+    }
+  ]
+}

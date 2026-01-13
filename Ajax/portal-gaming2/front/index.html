@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Videojuegos - Sistema CRUD</title>
+
+    <!-- CDNs de estilos (bootstrap, iconos y mi css) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <!-- JS libraries que necesito (jQuery y Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+			integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+			crossorigin="anonymous" defer>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous" defer></script>
+
+</head>
+<body>
+    
+    <!-- Contenedor principal -->
+    <div class="container">
+        
+        <!-- Header basico -->
+        <header class="bg-primary text-white py-3 mb-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Portal de Videojuegos</h1>
+                    <p>Proyecto DWEC - Alberto Jiménez 2º DAW</p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <a href="paginas/login/login.html" class="btn btn-warning">Iniciar Sesión</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="container flex-grow-1">
+            <div class="row">
+                
+                <!-- Panel principal de navegación -->
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-header bg-dark text-white">
+                            <h3 class="card-title mb-0">
+                                Panel de Videojuegos
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            
+                            <!-- Descripcion simple -->
+                            <div class="alert alert-info">
+                                <h5>Sobre este proyecto</h5>
+                                <p>Sistema básico para gestionar videojuegos con AJAX y JavaScript.</p>
+                            </div>
+                            
+                            <!-- Opciones -->
+                            <div class="row">
+                                
+                                <!-- Gestion principal -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h5>Gestión de Videojuegos</h5>
+                                            <p>CRUD completo de videojuegos</p>
+                                            <a href="paginas/videojuegos/videojuegos.html" class="btn btn-primary">Acceder</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Busqueda alfabetica -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h5>Búsqueda Alfabética</h5>
+                                            <p>Buscar por letras del abecedario</p>
+                                            <a href="paginas/videojuegos/videojuegos_alfabetico.html" class="btn btn-success">Acceder</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Busqueda avanzada -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h5>Búsqueda Avanzada</h5>
+                                            <p>Filtros por género, año, etc.</p>
+                                            <a href="paginas/videojuegos/videojuegos_busqueda.html" class="btn btn-warning">Acceder</a>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Componente demo -->
+                                <div class="col-md-6">
+                                    <div class="card border-info h-100">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-gear display-4 text-info mb-3"></i>
+                                            <h5 class="card-title">Demo Componente</h5>
+                                            <p class="card-text">Componente reutilizable: selector de puntuación</p>
+                                            <a href="paginas/videojuegos/componente_demo.html" class="btn btn-info">
+                                                <i class="bi bi-arrow-right-circle"></i> Probar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            <div class="container">
+                <p class="mb-0">
+                    <i class="bi bi-code-square"></i> 
+                    Proyecto desarrollado por Alberto Jiménez - 2º DAW - Enero 2026
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

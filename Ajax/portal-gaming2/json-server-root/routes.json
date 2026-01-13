@@ -1,0 +1,6 @@
+{
+    "/users*": "/600/users$1",
+    "/videojuegos*": "/660/videojuegos$1",
+    "/desarrolladoras*": "/660/desarrolladoras$1",
+    "/generos*": "/660/generos$1"
+}
