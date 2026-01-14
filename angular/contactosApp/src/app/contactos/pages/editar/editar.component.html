@@ -1,1 +1,58 @@
-<p>editar works!</p>
+<form (ngSubmit)="guardar()" [formGroup]="formulario" class="container" autocomplete="off">
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+
+            <!-- El título -->
+            <input formControlName="nombre" type="text" class="form-control">
+            <span class="form-text text-danger" *ngIf="esCampoNoValido('nombre')">{{ mensajeErrorCampo('nombre') }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+
+            <!-- El título -->
+            <input formControlName="apellidos" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="Teléfono" class="form-label">Teléfono</label>
+
+            <!-- El título -->
+            <input formControlName="telefono" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label for="Empresa" class="form-label">Empresa</label>
+
+            <!-- El título -->
+            <input formControlName="empresa" type="text" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary ms-2" [routerLink]="['/contactos/listado']">Cancelar</button>
+        </div>
+    </div>
+</form>
+
+
+<div>
+{{ formulario.valid }}
+<br>
+{{ formulario.errors| json }}
+<br>
+Nombre: {{ formulario.controls['nombre'].errors | json }}
+<br>
+Apellidos: {{ formulario.controls['apellidos'].errors | json }}
+<br>
+Teléfono: {{ formulario.controls['telefono'].errors | json }}
+<br>
+Empresa: {{ formulario.controls['empresa'].errors | json }}
+<br>
+{{ formulario.getRawValue()| json }}
+</div>

@@ -1,13 +1,11 @@
-import { Injectable } from '@angular/core';
-
-declare var $: any;
+import { Component, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DialogService {
+export class DialogComponent {
 
-  private HTML_MODAL_ALERT = `
+ private HTML_MODAL_ALERT = `
     <div class="modal fade" id="modalAlert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -46,6 +44,7 @@ export class DialogService {
     </div>
   `;
 
+
   private HTML_TOAST = `
   <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
     <div id="__Toast" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
@@ -57,9 +56,7 @@ export class DialogService {
       </div>
     </div>
   </div>
-  `;
-
-  constructor() { }
+  `
 
   /**
    * Muestra un mensaje
@@ -84,16 +81,18 @@ export class DialogService {
   
       $('#modalAlert').modal('show');  
     }
-  }
+  }  
 
-  /**
-   * Solicita confirmación al usuario antes de ejecutar una acción
-   * 
-   * @param mensaje 
-   * @param titulo 
-   * @param accion 
-   */
-  solicitarConfirmacion(mensaje: string, titulo: string, accion: any) {
+
+/**
+ * Crea un cuadro de diálogo de confirmación. Pasa como parámetro la acción a ejecutar si se confirma
+ * positivamente..
+ * 
+ * @param mensaje Mensaje a mostrar
+ * @param titulo Título del diálogo
+ * @param accion Callback a ejecutar si se confirma la acción
+ */  
+mostrarDialogoConfirmacion(mensaje: string, titulo: string, accion: any) {
     
     // Si no está insertado, lo inserto
     if(!$('#modalConfirmar').length) {
@@ -126,21 +125,21 @@ export class DialogService {
   
       $('#modalConfirmar').modal('show');  
     }
-  }
+  }  
 
-  /**
-   * Muestra un mensaje en formato Toast
-   * 
-   * @param mensaje 
-   */
+ /**
+  * Muestra un mensaje en formato Toast
+  * 
+  * @param mensaje 
+  */
   mostrarToast(mensaje: string) : void {
 
-    // Si no tengo insertado el alert lo inserto en el cuerpo
-    if(!$('#__Toast').length) {
+   // Si no tengo insertado el alert lo inserto en el cuerpo
+   if(!$('#__Toast').length) {
 
-      // Esto añade al body el HTML del alert
-      $('body').append( this.HTML_TOAST );           
-    }    
+    // Esto añade al body el HTML del alert
+     $('body').append( this.HTML_TOAST );           
+   }    
 
     _mostrarToast();
 
@@ -148,5 +147,5 @@ export class DialogService {
       $('#__Toast .toast-body').text(mensaje);  
       $('#__Toast').toast('show');  
     }
-  }
+  }  
 }

@@ -34,4 +34,34 @@ export class ContactosService {
     }    
   }
 
+  /**
+   * Obtiene un contacto por su id
+   * 
+   * @param id Id del contacto
+   * @returns Observable con el contacto
+   */
+  getById(id: number): Observable<Contacto> {
+    return this.httpClient.get<Contacto>(`http://localhost:3000/contactos/${id}`);
+  }
+
+  /**
+   * Crea un nuevo contacto
+   * 
+   * @param contacto Datos del contacto a crear
+   * @returns Observable con el contacto creado
+   */
+  crear(contacto: Contacto): Observable<Contacto> {
+    return this.httpClient.post<Contacto>("http://localhost:3000/contactos", contacto);
+  }
+
+  /**
+   * Actualiza un contacto existente
+   * 
+   * @param contacto Datos del contacto a actualizar
+   * @returns Observable con el contacto actualizado
+   */
+  actualizar(contacto: Contacto): Observable<Contacto> {
+    return this.httpClient.put<Contacto>(`http://localhost:3000/contactos/${contacto.id}`, contacto);
+  }
+
 }
